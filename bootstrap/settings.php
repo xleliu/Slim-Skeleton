@@ -5,7 +5,7 @@ return [
 
         // Renderer settings
         'blade' => [
-            'view_path' => [__DIR__ . '/../app/views'],
+            'view_path' => [__DIR__ . '/../views'],
             'cache_path' => __DIR__ . '/../storage/cache',
         ],
 

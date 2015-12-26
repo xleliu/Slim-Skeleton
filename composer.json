@@ -1,14 +1,14 @@
 {
-    "name": "slim/slim-skeleton",
+    "name": "xiaoler/slim-skeleton",
     "description": "A Slim Framework skeleton application for rapid development",
     "keywords": ["microframework","rest","router", "psr7"],
-    "homepage": "http://github.com/slimphp/Slim-Skeleton",
+    "homepage": "http://github.com/XiaoLer/Slim-Skeleton",
     "license": "MIT",
     "authors": [
         {
-            "name": "Josh Lockhart",
-            "email": "info@joshlockhart.com",
-            "homepage": "http://www.joshlockhart.com/"
+            "name": "Scholer Liu",
+            "email": "scholer_l@live.com",
+            "homepage": "http://0x1.im/"
         }
     ],
     "require": {
@@ -16,5 +16,10 @@
         "slim/slim": "~3.0",
         "xiaoler/blade": "*",
         "monolog/monolog": "^1.17"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
     }
 }
