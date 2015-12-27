@@ -22,6 +22,9 @@ require __DIR__ . '/../bootstrap/dependencies.php';
 // Register middleware
 require __DIR__ . '/../bootstrap/middleware.php';
 
+// Register hepler functuions
+require __DIR__ . '/../bootstrap/helpers.php';
+
 // Register routes
 require __DIR__ . '/../app/routes.php';
 
