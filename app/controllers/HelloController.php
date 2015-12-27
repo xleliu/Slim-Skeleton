@@ -5,6 +5,6 @@ class HelloController extends Controller
 {
     public function getWorld()
     {
-        return "Hello World!";
+        return $this->blade->make('index');
     }
 }

@@ -4,6 +4,47 @@ namespace App\Controllers;
 class Controller
 {
     /**
+     * Container of slim application.
+     * @var Interop\Container\ContainerInterface
+     */
+    protected $container;
+
+    /**
+     * The instance of \Slim\App class.
+     * @var \Slim\App
+     */
+    protected $app;
+
+    /**
+     * Set container as implementation of ContainerInterface.
+     * @param Interop\Container\ContainerInterface $container
+     */
+    public function setContainer($container)
+    {
+        $this->container = $container;
+    }
+
+    /**
+     * Set application as instance of \Slim\App.
+     * @param \Slim\app $app
+     */
+    public function setApplication($app)
+    {
+        $this->app = $app;
+    }
+
+    /**
+     * All property which is not in this will regard as member of container.
+     *
+     * @param  string $property
+     * @return mixed  property of container
+     */
+    public function __get($property)
+    {
+        return $this->container[$property];
+    }
+
+    /**
      * Entry of all controllers and actions;
      * However you can also override it if you want.
      *
@@ -13,11 +54,14 @@ class Controller
      */
     public function __invoke($request, $response, $args)
     {
-         // At frist we should get the action from router.
+        // At frist we should get the action from router.
         $action = strtolower($request->getMethod()) . ucfirst($request->getAttribute('action'));
          // Then if the method is existed, we can call it;
          // Or we should throw \Slim\Exception\NotFoundException.
         if (method_exists($instance = new static, $action)) {
+            // Set application and container from global variables.
+            $instance->setApplication($GLOBALS['app']);
+            $instance->setContainer($GLOBALS['container']);
             // Remove {action} from args.
             array_shift($args);
             // Get response body and write it to response.
