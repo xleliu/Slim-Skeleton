@@ -1,14 +1,11 @@
 <?php
 namespace App\Controllers;
 
+use InvalidArgumentException;
+use \Interop\Container\ContainerInterface;
+
 class Controller
 {
-    /**
-     * Container of slim application.
-     * @var Interop\Container\ContainerInterface
-     */
-    protected $container;
-
     /**
      * The instance of \Slim\App class.
      * @var \Slim\App
@@ -16,21 +13,30 @@ class Controller
     protected $app;
 
     /**
-     * Set container as implementation of ContainerInterface.
-     * @param Interop\Container\ContainerInterface $container
+     * Container of slim application.
+     * @var Interop\Container\ContainerInterface
      */
-    public function setContainer($container)
-    {
-        $this->container = $container;
-    }
+    protected $container;
 
     /**
      * Set application as instance of \Slim\App.
      * @param \Slim\app $app
      */
-    public function setApplication($app)
+    public function setApplication(\Slim\App $app)
     {
         $this->app = $app;
+    }
+
+    /**
+     * Set container as implementation of ContainerInterface.
+     * @param Interop\Container\ContainerInterface $container
+     */
+    public function setContainer($container)
+    {
+        if (!$container instanceof ContainerInterface) {
+            throw new InvalidArgumentException('Expected a ContainerInterface');
+        }
+        $this->container = $container;
     }
 
     /**
