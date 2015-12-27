@@ -6,4 +6,4 @@ $app->get('/[{name}]', function ($request, $response, $args) {
     $response->getBody()->write($view);
 });
 
-$app->any('/hello/{action}', 'App\Controllers\HelloController');
+$app->any('/hello/{action}[/[{args}]]', 'App\Controllers\HelloController');
