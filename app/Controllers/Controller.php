@@ -22,8 +22,11 @@ class Controller
      * Set application as instance of \Slim\App.
      * @param \Slim\app $app
      */
-    public function setApplication(\Slim\App $app)
+    public function setApplication($app)
     {
+        if (!$app instanceof \Slim\App) {
+            throw new InvalidArgumentException('Expected a \Slim\App');
+        }
         $this->app = $app;
     }
 
