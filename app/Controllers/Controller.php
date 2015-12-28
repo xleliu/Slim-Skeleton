@@ -2,7 +2,7 @@
 namespace App\Controllers;
 
 use InvalidArgumentException;
-use \Interop\Container\ContainerInterface;
+use Interop\Container\ContainerInterface;
 
 class Controller
 {
