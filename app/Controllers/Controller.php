@@ -63,16 +63,16 @@ class Controller
      */
     public function __invoke($request, $response, $args)
     {
-        // At frist we should get the action from router.
-        $action = strtolower($request->getMethod()) . ucfirst($request->getAttribute('action'));
+        // We would get first argument as action, if it does not existed, set it as index
+        // else we should get the action from router and remove it from arguments.
+        $action = count($args) < 1 ? 'Index' : ucfirst(array_shift($args));
+        $action = strtolower($request->getMethod()) . $action;
          // Then if the method is existed, we can call it;
          // Or we should throw \Slim\Exception\NotFoundException.
         if (method_exists($instance = new static, $action)) {
             // Set application and container from global variables.
             $instance->setApplication($GLOBALS['app']);
             $instance->setContainer($GLOBALS['container']);
-            // Remove {action} from args.
-            array_shift($args);
             // Get response body and write it to response.
             $content = call_user_func_array([$instance, $action], $args);
             $response->getBody()->write($content);
