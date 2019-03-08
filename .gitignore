@@ -1,1 +1,4 @@
-/vendor/
+.env
+vendor/
+composer.lock
+.php_cs.cache

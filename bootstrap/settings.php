@@ -1,13 +1,10 @@
 <?php
+
 return [
     'settings' => [
-        'displayErrorDetails' => true,
-
-        // Renderer settings
-        'blade' => [
-            'view_path' => [__DIR__ . '/../views'],
-            'cache_path' => __DIR__ . '/../storage/cache',
-        ],
+        // Slim Settings
+        'determineRouteBeforeAppMiddleware' => false,
+        'displayErrorDetails' => getenv('APP_DEBUG') ?: false,
 
         // Monolog settings
         'logger' => [
