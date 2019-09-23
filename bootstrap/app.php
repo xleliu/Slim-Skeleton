@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Container\Container;
+use Slim\Factory\AppFactory;
+
 require __DIR__ . '/../vendor/autoload.php';
 
 // 加载配置文件
@@ -9,13 +12,16 @@ try {
     // do nothing
 }
 
+// Set container to create App with on AppFactory
+AppFactory::setContainer(new Container());
+$app = AppFactory::create();
+
 // 开启全局session
 // session_start();
 
 // Instantiate the app
-$settings = require __DIR__ . '/settings.php';
+// $settings = require __DIR__ . '/settings.php';
 
-$app = new \Slim\App($settings);
 // Set up dependencies
 require __DIR__ . '/dependencies.php';
 // Register middleware

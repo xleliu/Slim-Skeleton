@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use Psr\Container\ContainerInterface;
-use Slim\Exception\NotFoundException;
 
 class Controller
 {
