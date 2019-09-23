@@ -13,7 +13,7 @@
     ],
     "require": {
         "php": ">=7.2.0",
-        "slim/slim": "^4.0",
+        "slim/slim": "^4.2",
         "vlucas/phpdotenv": "^3.3",
         "illuminate/database": "~5.8",
         "respect/validation": "^1.1",

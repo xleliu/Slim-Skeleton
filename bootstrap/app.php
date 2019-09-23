@@ -15,12 +15,10 @@ try {
 // Set container to create App with on AppFactory
 AppFactory::setContainer(new Container());
 $app = AppFactory::create();
+// $app->setBasePath(__DIR__ . '/../');
 
 // 开启全局session
 // session_start();
-
-// Instantiate the app
-// $settings = require __DIR__ . '/settings.php';
 
 // Set up dependencies
 require __DIR__ . '/dependencies.php';
