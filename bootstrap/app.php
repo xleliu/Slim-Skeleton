@@ -15,7 +15,6 @@ try {
 // Set container to create App with on AppFactory
 AppFactory::setContainer(new Container());
 $app = AppFactory::create();
-// $app->setBasePath(__DIR__ . '/../');
 
 // 开启全局session
 // session_start();
