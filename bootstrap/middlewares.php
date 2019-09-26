@@ -1,4 +1,10 @@
 <?php
+
 // Application middleware
 
-// e.g: $app->add(new \Slim\Csrf\Guard);
+// Add Routing Middleware
+$app->addRoutingMiddleware();
+
+// Add Error Handling Middleware
+$displayErrorDetails = env('APP_DEBUG') ?: false;
+$errorMiddleware = $app->addErrorMiddleware($displayErrorDetails, true, true);

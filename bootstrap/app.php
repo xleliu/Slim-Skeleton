@@ -2,13 +2,15 @@
 
 use Illuminate\Container\Container;
 use Slim\Factory\AppFactory;
+use Dotenv\Dotenv;
+use Dotenv\Exception\InvalidPathException;
 
 require __DIR__ . '/../vendor/autoload.php';
 
 // 加载配置文件
 try {
-    $dotenv = Dotenv\Dotenv::create(__DIR__ . '/../')->load();
-} catch (Dotenv\Exception\InvalidPathException $e) {
+    $dotenv = Dotenv::create(__DIR__ . '/../')->load();
+} catch (InvalidPathException $e) {
     // do nothing
 }
 
@@ -16,15 +18,18 @@ try {
 AppFactory::setContainer(new Container());
 $app = AppFactory::create();
 
-// 开启全局session
-// session_start();
+// Set container instance
+Container::setInstance($app->getContainer());
+$app->getContainer()->instance('app', $app);
+
+// Register hepler functuions
+require __DIR__ . '/helpers.php';
 
 // Set up dependencies
 require __DIR__ . '/dependencies.php';
+
 // Register middleware
 require __DIR__ . '/middlewares.php';
-// Register hepler functuions
-require __DIR__ . '/helpers.php';
 
 // Register routes
 require __DIR__ . '/../app/routes.php';

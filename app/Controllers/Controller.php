@@ -9,14 +9,14 @@ class Controller
     /**
      * Container of slim application.
      *
-     * @var \Interop\Container\ContainerInterface
+     * @var Psr\Container\ContainerInterface
      */
     protected $container;
 
     /**
      * Set container as implementation of ContainerInterface.
      *
-     * @param \Interop\Container\ContainerInterface $container
+     * @param Psr\Container\ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
     {
