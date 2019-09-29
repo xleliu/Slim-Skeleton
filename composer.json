@@ -13,13 +13,14 @@
     ],
     "require": {
         "php": ">=7.2.0",
-        "slim/slim": "^4.2",
-        "vlucas/phpdotenv": "^3.3",
-        "illuminate/database": "^5.8",
         "illuminate/container": "^5.8",
-        "symfony/console": "^4.2",
+        "illuminate/database": "^5.8",
         "monolog/monolog": "^1.17",
-        "slim/psr7": "^0.3.0"
+        "slim/http": "^0.8.0",
+        "slim/psr7": "^0.3.0",
+        "slim/slim": "^4.2",
+        "symfony/console": "^4.2",
+        "vlucas/phpdotenv": "^3.3"
     },
     "autoload": {
         "psr-4": {
